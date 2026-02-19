@@ -12,6 +12,8 @@ public class GameWorld {
     private Planet nextPlanet;
     private boolean gameOver;
     private boolean canDrop;
+    private long dropTimerStart = -1;
+    private final long DROP_DELAY = 1500;
 
     public GameWorld() {
         planets = new ArrayList<>();
@@ -104,6 +106,7 @@ public class GameWorld {
         spawnX = Boundary.getCentreWidth();
         score = 0;
         gameOver = false;
+        canDrop = true;
     }
 
     public void checkGameOver() {
@@ -152,10 +155,15 @@ public class GameWorld {
     private void unlockDrop() {
         if (planets.isEmpty()) return;
 
-        Planet last = planets.get(planets.size() - 1);
+        if (dropTimerStart == -1) {
+            dropTimerStart = System.currentTimeMillis();
+        }
 
-        if (Math.abs(last.getVelocityY()) < 0.5) {
+        long now = System.currentTimeMillis();
+
+        if (now - dropTimerStart >= DROP_DELAY) {
             canDrop = true;
+            dropTimerStart = -1;  // reset ไว้รอรอบหน้า
         }
     }
 }

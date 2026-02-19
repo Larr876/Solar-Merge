@@ -19,19 +19,20 @@ public class PhysicsEngine {
 
             boolean onFloor = (p.getY() + p.getRadius() >= Boundary.FLOOR - 0.5);
 
-            if (!onFloor || vy < 0) {   // ใส่ gravity เฉพาะตอนยังลอยอยู่
+            if (!onFloor) {   // ใส่ gravity เฉพาะตอนยังลอยอยู่
                 vy += this.gravity;
+            } else {
+                vy = 0;
             }
             vy *= this.frictionY;
 
             // 0.001 แก้ได้ตามความเหมาะสม เอาไว้กันไม่ให้มันเคลื่อนที่โดยไม่หยุด
-            if (Math.abs(vx) < 0.001) {
+            if (Math.abs(vx) < 0.2) {
                 vx = 0;
             }
-            if (onFloor && Math.abs(vy) < 0.1) {
+            if (onFloor && Math.abs(vy) < 0.2) {
                 vy = 0;
             }
-
             p.setVelocity(vx, vy);
         }
 
@@ -64,8 +65,8 @@ public class PhysicsEngine {
             return;
         }
 
-        double overlap = ((p.getRadius() + q.getRadius()) - dis) + 0.2;
-        if (overlap > 0) {
+        double overlap = ((p.getRadius() + q.getRadius()) - dis);
+        if (overlap > 0.01) {
             double nx = dx / dis;
             double ny = dy / dis;
 
@@ -185,7 +186,7 @@ public class PhysicsEngine {
 
     // return ดาวใหม่ที่รอเรียก spawn
     public Planet mergePlanet(Planet p1, Planet p2) {
-        if (planetCollision(p1, p2) && p1.getType().getLevel() == p2.getType().getLevel()) {
+        if (planetCollision(p1, p2) && p1.getType().getLevel() == p2.getType().getLevel() && p1.getType() != PlanetType.SUN) {
 
             double newX = (p1.getX() + p2.getX()) / 2;
             double newY = (p1.getY() + p2.getY()) / 2;

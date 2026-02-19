@@ -34,6 +34,9 @@ public class GamePanel extends JPanel{
         drawScore(g);
         drawSpawnCursor(g);
         drawBoundary(g);
+        if (world.isGameOver()) {
+            drawGameOver(g);
+        }
     }
 
     private void drawBackground(Graphics g) {
@@ -84,5 +87,14 @@ public class GamePanel extends JPanel{
         g.drawLine((int) Boundary.LEFT, (int) Boundary.TOP, (int) Boundary.LEFT, (int) Boundary.FLOOR);
         g.drawLine((int) Boundary.RIGHT, (int) Boundary.TOP, (int) Boundary.RIGHT, (int) Boundary.FLOOR);
         g.drawLine((int) Boundary.LEFT, (int) Boundary.FLOOR, (int) Boundary.RIGHT, (int) Boundary.FLOOR);
+    }
+
+    private void drawGameOver(Graphics g) {
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Impact", Font.BOLD, 70));
+        g.drawString("Game Over", GameConfig.BOARDWIDTH / 2 - 150, 70);
+
+        g.setFont(new Font("Impact", Font.PLAIN, 30));
+        g.drawString("press r to reset", GameConfig.BOARDWIDTH / 2 - 100, 100);
     }
 }
