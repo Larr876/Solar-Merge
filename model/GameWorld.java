@@ -14,11 +14,14 @@ public class GameWorld {
     private boolean canDrop;
     private long dropTimerStart = -1;
     private final long DROP_DELAY = 1500;
+    private Set<PlanetType> typesAvailable;
 
     public GameWorld() {
         planets = new ArrayList<>();
         score = 0;
         highestScore = 0;
+        typesAvailable = new HashSet<>();
+        typesAvailable.add(PlanetType.MERCURY);
         physics = new PhysicsEngine();
         spawnX = Boundary.getCentreWidth();
         gameOver = false;
@@ -69,7 +72,10 @@ public class GameWorld {
     public PlanetType getRandomPlanetType() {
         Random random = new Random();
         PlanetType[] types = PlanetType.values();
-        return types[random.nextInt(types.length - 1)];   //กำหนดค่าเอง
+        if (typesAvailable.size() <= 3) {
+            return types[random.nextInt(3)];
+        }
+        return types[random.nextInt(typesAvailable.size())];   //กำหนดค่าเอง
     }
 
     public void removePlanet(Planet planet) {
@@ -78,6 +84,7 @@ public class GameWorld {
 
     public Planet spawnPlanet(double x, double y, PlanetType type) {
         Planet planet = new Planet(x, y, type);
+        typesAvailable.add(type);
         planets.add(planet);
         return planet;
     }
@@ -132,6 +139,7 @@ public class GameWorld {
                     planets.add(newPlanet);
                     planets.remove(p);
                     planets.remove(q);
+                    typesAvailable.add(newPlanet.getType());
                     return;
                 }
             }
