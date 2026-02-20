@@ -28,6 +28,11 @@ public class GameController implements ActionListener, KeyListener {
     }
     
     public void handleKeyPress(int keyCode) {
+        if (keyCode == KeyEvent.VK_R) {
+            world.reset();
+            
+        }
+        if (world.isGameOver()) return;
         switch (keyCode) {
             case KeyEvent.VK_LEFT:
                 world.moveSpawnPosition(-20);
@@ -39,10 +44,6 @@ public class GameController implements ActionListener, KeyListener {
 
             case KeyEvent.VK_SPACE:
                 world.dropPlanet();
-                break;
-
-            case KeyEvent.VK_R:
-                world.reset();
                 break;
         }
         panel.repaint();
