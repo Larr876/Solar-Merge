@@ -66,7 +66,7 @@ public class PhysicsEngine {
         }
 
         double overlap = ((p.getRadius() + q.getRadius()) - dis);
-        if (overlap > 0.01) {
+        if (overlap > 0.03) {
             double nx = dx / dis;
             double ny = dy / dis;
 

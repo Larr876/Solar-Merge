@@ -118,7 +118,7 @@ public class GameWorld {
 
     public void checkGameOver() {
         for (Planet p : planets) {
-            if (p.getY() - p.radius < Boundary.TOP) {
+            if (p.getY() + p.radius < Boundary.TOP) {
                 gameOver = true;
             }
         }
