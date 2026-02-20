@@ -5,24 +5,39 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import model.Boundary;
 import model.GameWorld;
 import model.Planet;
+import model.PlanetType;
 
 public class GamePanel extends JPanel{
 
     private GameWorld world;
-    // private Map<PlanetType, Image> images;
+    private Map<PlanetType, Image> images;
     private Image bg;
 
     public GamePanel(GameWorld world) {
         this.world = world;
-        // bg = new ImageIcon(getClass().getResource("/img/bg.jpg")).getImage();
+        loadImage();
 
         setPreferredSize(new Dimension(GameConfig.BOARDWIDTH, GameConfig.BOARDHEIGHT));
         setBackground(Color.BLACK);
+    }
+
+    private void loadImage() {
+        // bg = new ImageIcon(getClass().getResource("/img/bg.jpg")).getImage();
+        // images.put(PlanetType.MERCURY, new ImageIcon(getClass().getResource("/img/mercury.jpg")).getImage());
+        // images.put(PlanetType.MARS, new ImageIcon(getClass().getResource("/img/mars.jpg")).getImage());
+        // images.put(PlanetType.VENUS, new ImageIcon(getClass().getResource("/img/venus.jpg")).getImage());
+        // images.put(PlanetType.EARTH, new ImageIcon(getClass().getResource("/img/earth.jpg")).getImage());
+        // images.put(PlanetType.NEPTUNE, new ImageIcon(getClass().getResource("/img/neptune.jpg")).getImage());
+        // images.put(PlanetType.URANUS, new ImageIcon(getClass().getResource("/img/uranus.jpg")).getImage());
+        // images.put(PlanetType.SATURN, new ImageIcon(getClass().getResource("/img/saturn.jpg")).getImage());
+        // images.put(PlanetType.JUPITER, new ImageIcon(getClass().getResource("/img/jupiter.jpg")).getImage());
+        // images.put(PlanetType.SUN, new ImageIcon(getClass().getResource("/img/sun.jpg")).getImage());
     }
 
     @Override
@@ -47,8 +62,8 @@ public class GamePanel extends JPanel{
     //     for (Planet p : world.getPlanets()) {
     //         Image img = images.get(p.getType());
 
-    //         int x = (int) p.getX();
-    //         int y = (int) p.getY();
+                // int x = (int) p.getX() - (int) p.getRadius();
+    //         int y = (int) p.getY() - (int) p.getRadius();
     //         int size = (int)(p.getRadius() * 2);
 
     //         g.drawImage(img, x, y, size, size, null);
