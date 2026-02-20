@@ -90,11 +90,14 @@ public class GamePanel extends JPanel{
     }
 
     private void drawGameOver(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(Color.YELLOW);
         g.setFont(new Font("Impact", Font.BOLD, 70));
         g.drawString("Game Over", GameConfig.BOARDWIDTH / 2 - 150, 70);
 
-        g.setFont(new Font("Impact", Font.PLAIN, 30));
-        g.drawString("press r to reset", GameConfig.BOARDWIDTH / 2 - 100, 100);
+        g.setFont(new Font("Impact", Font.PLAIN, 20));
+        g.drawString("press r to reset", GameConfig.BOARDWIDTH / 2 - 70, 90);
+
+        g.setFont(new Font("Impact", Font.PLAIN, 20));
+        g.drawString("press m to return to menu", GameConfig.BOARDWIDTH / 2 - 70, 110);
     }
 }

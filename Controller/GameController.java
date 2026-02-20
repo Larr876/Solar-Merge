@@ -1,5 +1,6 @@
 package Controller;
 
+import View.GameFrame;
 import View.GamePanel;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,11 +10,13 @@ public class GameController implements ActionListener, KeyListener {
 
     private GameWorld world;
     private GamePanel panel;
+    private GameFrame frame;
     private Timer gameLoop;
 
-    public GameController(GameWorld world, GamePanel panel) {
+    public GameController(GameWorld world, GamePanel panel, GameFrame frame) {
         this.world = world;
         this.panel = panel;
+        this.frame = frame;
 
         gameLoop = new Timer(16, this);
     }
@@ -30,7 +33,11 @@ public class GameController implements ActionListener, KeyListener {
     public void handleKeyPress(int keyCode) {
         if (keyCode == KeyEvent.VK_R) {
             world.reset();
-            
+        }
+
+        if (keyCode == KeyEvent.VK_M) {
+            world.reset();
+            frame.showMenu();
         }
         if (world.isGameOver()) return;
         switch (keyCode) {
