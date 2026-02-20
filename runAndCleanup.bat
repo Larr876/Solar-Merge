@@ -10,8 +10,9 @@ if errorlevel 1 goto :error
 echo Running...
 java SolarMerge
 goto :end
+
 :error
-echo Error occured.
+echo Error occured
 exit /b 1
 
 :end
