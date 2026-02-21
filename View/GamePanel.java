@@ -44,7 +44,6 @@ public class GamePanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        drawBackground(g);
         drawPlanets(g);
         drawScore(g);
         drawSpawnCursor(g);
