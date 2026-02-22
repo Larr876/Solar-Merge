@@ -41,11 +41,6 @@ public class GameWorld {
     }
 
     public void updateScore() {
-        int tmp = 0;
-        for (Planet p : planets) {
-            tmp += p.getScore();
-        }
-        this.score = tmp;
         if (score >= highestScore) {
             highestScore = score;
         }
@@ -140,6 +135,7 @@ public class GameWorld {
                     planets.remove(p);
                     planets.remove(q);
                     typesAvailable.add(newPlanet.getType());
+                    score += newPlanet.getScore();
                     return;
                 }
             }

@@ -186,7 +186,7 @@ public class PhysicsEngine {
 
     // return ดาวใหม่ที่รอเรียก spawn
     public Planet mergePlanet(Planet p1, Planet p2) {
-        if (planetCollision(p1, p2) && p1.getType().getLevel() == p2.getType().getLevel() && p1.getType() != PlanetType.SUN) {
+        if (planetCollision(p1, p2) && p1.getType().getLevel() == p2.getType().getLevel()) {
 
             double newX = (p1.getX() + p2.getX()) / 2;
             double newY = (p1.getY() + p2.getY()) / 2;
