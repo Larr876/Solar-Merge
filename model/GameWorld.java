@@ -24,6 +24,7 @@ public class GameWorld {
 
         spawnable = Arrays.stream(PlanetType.values()).filter(PlanetType::isSpawnable).toList();
         typesAvailable = new HashSet<>();
+        typesAvailable.add(PlanetType.MERCURY);
 
         physics = new PhysicsEngine();
         spawnX = Boundary.getCentreWidth();
@@ -111,6 +112,7 @@ public class GameWorld {
         spawnX = Boundary.getCentreWidth();
         nextPlanet = new Planet(spawnX, Boundary.TOP, getRandomPlanetType());
         typesAvailable.clear();
+        typesAvailable.add(PlanetType.MERCURY);
         score = 0;
         gameOver = false;
         canDrop = true;
@@ -135,12 +137,20 @@ public class GameWorld {
                 Planet q = planets.get(j);
 
                 Planet newPlanet = physics.mergePlanet(p, q);
-                if (newPlanet != null) {
+
+                if (newPlanet != null && newPlanet.getType() != PlanetType.MERCURY) {
                     planets.add(newPlanet);
                     planets.remove(p);
                     planets.remove(q);
                     typesAvailable.add(newPlanet.getType());
                     score += newPlanet.getScore();
+                    return;
+                }
+
+                if (newPlanet != null && newPlanet.getType() == PlanetType.MERCURY) {
+                    planets.remove(p);
+                    planets.remove(q);
+                    score += 200;
                     return;
                 }
             }

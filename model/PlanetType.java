@@ -3,15 +3,15 @@ package model;
 public enum PlanetType {
 
     // radius รอแก้
-    MERCURY(1, 20, 1),
-    MARS(2, 25, 2),
-    VENUS(3, 30, 4),
-    EARTH(4, 35, 8),
-    NEPTUNE(5, 40, 16),
-    URANUS(6, 45, 32),
-    SATURN(7, 55, 64),
-    JUPITER(8, 70, 128),
-    SUN(9, 100, 256);
+    MERCURY(1, 30, 1),
+    MARS(2, 35, 2),
+    VENUS(3, 40, 4),
+    EARTH(4, 45, 8),
+    NEPTUNE(5, 55, 16),
+    URANUS(6, 70, 32),
+    SATURN(7, 80, 64),
+    JUPITER(8, 100, 128),
+    SUN(9, 130, 256);
 
     private final int level;
     private final int radius;
