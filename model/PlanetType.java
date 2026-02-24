@@ -43,4 +43,7 @@ public enum PlanetType {
         }
         return values[nextIndex];
     }
+    public boolean isSpawnable() {
+        return this != SUN;
+    }
 }
