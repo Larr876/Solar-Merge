@@ -151,7 +151,7 @@ public class GameWorld {
                 if (newPlanet != null && newPlanet.getType() == PlanetType.MERCURY) {
                     planets.remove(p);
                     planets.remove(q);
-                    score += 200;
+                    score += 512;
                     return;
                 }
             }
