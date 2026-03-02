@@ -143,6 +143,7 @@ public class GameWorld {
                     planets.remove(p);
                     planets.remove(q);
                     typesAvailable.add(newPlanet.getType());
+                    typesAvailable.remove(PlanetType.SUN);
                     score += newPlanet.getScore();
                     return;
                 }

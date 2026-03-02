@@ -10,7 +10,7 @@ public class GameFont {
 
     static {
         try {
-            baseFont = Font.createFont(Font.TRUETYPE_FONT,GameFont.class.getResourceAsStream("/font/Pixel.ttf"));
+            baseFont = Font.createFont(Font.TRUETYPE_FONT, GameFont.class.getResourceAsStream("/font/Pixel.ttf"));
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
             baseFont = new Font("Arial", Font.BOLD, 20);
